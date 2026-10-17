@@ -1,0 +1,70 @@
+<!doctype html>
+<!--
+  TELA DA CALCULADORA
+  Este arquivo só monta o formulário e o espaço do resultado; as contas
+  ficam em src/calculadora.js e a ligação entre os dois em src/app.js.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1f3a5f">
+  <title>Calculadora de Prazos CPC</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Calculadora de Prazos</h1>
+      <p class="subtitulo">CPC, dias úteis, TJSP (capital)</p>
+    </header>
+
+    <form id="formulario" novalidate>
+      <label for="data">Data da publicação</label>
+      <input type="date" id="data" required>
+
+      <label for="dias">Prazo em dias úteis</label>
+      <input type="number" id="dias" min="1" max="365" value="15" inputmode="numeric" required>
+
+      <div class="atalhos" aria-label="Prazos comuns">
+        <button type="button" data-dias="5">5</button>
+        <button type="button" data-dias="10">10</button>
+        <button type="button" data-dias="15">15</button>
+        <button type="button" data-dias="30">30</button>
+      </div>
+
+      <label class="opcao">
+        <input type="checkbox" id="disponibilizacao">
+        <span>A data é a de <strong>disponibilização</strong> no Diário eletrônico</span>
+      </label>
+      <label class="opcao">
+        <input type="checkbox" id="municipais" checked>
+        <span>Incluir feriados municipais da capital (25/01)</span>
+      </label>
+
+      <button type="submit" class="calcular">Calcular</button>
+    </form>
+
+    <p id="erro" class="erro" role="alert" hidden></p>
+
+    <section id="resultado" hidden aria-live="polite">
+      <div class="destaque">
+        <span>Último dia do prazo</span>
+        <strong id="data-final"></strong>
+        <span id="dia-semana-final"></span>
+        <small id="resumo"></small>
+      </div>
+      <h2>Contagem dia a dia</h2>
+      <ol id="contagem"></ol>
+    </section>
+
+    <footer>
+      <p>Regras: arts. 219, 220 e 224 do CPC. Feriados e pontes do TJSP conforme os Provimentos CSM de 2024 a 2026.
+      Suspensões extraordinárias (queda de sistema, por exemplo) precisam ser incluídas à mão em <code>src/feriados.js</code>.
+      Confira sempre no calendário oficial do tribunal.</p>
+    </footer>
+  </main>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

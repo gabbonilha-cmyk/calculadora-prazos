@@ -1,0 +1,129 @@
+/* =====================================================================
+   APARÊNCIA
+   Cores e tamanhos pensados primeiro para a tela do celular; em telas
+   maiores o conteúdo só fica centralizado. Tem modo escuro automático.
+   ===================================================================== */
+
+:root {
+  --fundo: #f4f6f9;
+  --cartao: #ffffff;
+  --texto: #1b2430;
+  --suave: #5b6675;
+  --borda: #d8dee6;
+  --principal: #1f3a5f;
+  --principal-texto: #ffffff;
+  --conta: #e7f1ea;
+  --conta-borda: #2e7d4f;
+  --final: #fff3d6;
+  --final-borda: #c98a00;
+  --erro: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #12161c;
+    --cartao: #1c222b;
+    --texto: #e6e9ee;
+    --suave: #9aa5b4;
+    --borda: #2f3846;
+    --principal: #7fa7d9;
+    --principal-texto: #0e1620;
+    --conta: #1b2e23;
+    --conta-borda: #5cbf86;
+    --final: #3a2f12;
+    --final-borda: #f0b429;
+    --erro: #ff8a80;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+main { max-width: 560px; margin: 0 auto; padding: 16px; }
+
+header h1 { margin: 8px 0 0; font-size: 1.6rem; color: var(--principal); }
+.subtitulo { margin: 2px 0 16px; color: var(--suave); }
+
+form, .destaque {
+  background: var(--cartao);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+label { display: block; font-weight: 600; margin: 12px 0 4px; }
+label:first-child { margin-top: 0; }
+
+input[type="date"], input[type="number"] {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 12px;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.atalhos { display: flex; gap: 8px; margin-top: 8px; }
+.atalhos button {
+  flex: 1;
+  padding: 10px 0;
+  font-size: 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.opcao { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; margin-top: 14px; }
+.opcao input { width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; }
+
+.calcular {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: 0;
+  border-radius: 10px;
+  background: var(--principal);
+  color: var(--principal-texto);
+}
+
+.erro { color: var(--erro); font-weight: 600; }
+
+#resultado { margin-top: 20px; scroll-margin-top: 12px; }
+.destaque { text-align: center; border-color: var(--final-borda); background: var(--final); }
+.destaque span { display: block; color: var(--suave); }
+.destaque strong { display: block; font-size: 2rem; margin: 4px 0 0; }
+#dia-semana-final { color: var(--texto); margin-bottom: 6px; }
+.destaque small { color: var(--suave); }
+
+h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+
+#contagem { list-style: none; padding: 0; margin: 0; }
+.dia {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+}
+.dia.conta { background: var(--conta); border-left-color: var(--conta-borda); }
+.dia.nao-conta { color: var(--suave); }
+.dia.final { background: var(--final); border-left-color: var(--final-borda); }
+.numero { min-width: 2ch; text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.texto { display: flex; flex-direction: column; }
+.texto small { font-size: 0.85rem; }
+.nao-conta .texto strong { font-weight: 500; }
+
+footer { margin: 28px 0 12px; font-size: 0.8rem; color: var(--suave); }
+code { font-size: 0.9em; }

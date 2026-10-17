@@ -1,0 +1,10 @@
+{
+  "name": "calculadora-prazos",
+  "version": "1.0.0",
+  "description": "Calculadora de prazos processuais do CPC em dias úteis (TJSP)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test testes/*.test.js"
+  },
+  "license": "MIT"
+}
